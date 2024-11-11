@@ -14,6 +14,8 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "invoice")
 public class Invoice {
@@ -33,19 +35,18 @@ public class Invoice {
     private double total;
 
     @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<InvoiceDetail> details;
 
 
 
     // CONSTRUCTORES
-
     public Invoice() {
+        super();
     }
 
 
     // GETERS & SETTERS
-
-
     public Long getId() {
         return id;
     }

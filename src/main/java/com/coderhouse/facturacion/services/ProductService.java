@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.coderhouse.facturacion.models.Client;
+
 import com.coderhouse.facturacion.models.Product;
 import com.coderhouse.facturacion.repositories.ProductRepository;
 
@@ -40,7 +40,7 @@ public class ProductService {
 
     // Actualizar a un producto
     @Transactional
-    public Product updateClient(Long id, Product productDetails){
+    public Product updateProduct(Long id, Product productDetails){
 
         Product product = productRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Producto no encontrado"));
 
@@ -65,6 +65,5 @@ public class ProductService {
             productRepository.deleteById(id);
         }
     }
-
 
 }

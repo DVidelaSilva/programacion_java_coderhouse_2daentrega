@@ -6,6 +6,4 @@ import com.coderhouse.facturacion.models.Product;
 
 public interface ProductRepository  extends JpaRepository<Product, Long>{
 
-
-
 }

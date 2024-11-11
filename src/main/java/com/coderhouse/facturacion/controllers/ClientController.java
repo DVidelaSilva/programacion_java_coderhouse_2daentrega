@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.coderhouse.facturacion.models.Client;
 import com.coderhouse.facturacion.services.ClientService;
 
+
+
 @RestController
 @RequestMapping("/api/clients")
 public class ClientController {
@@ -29,7 +31,9 @@ public class ClientController {
     @GetMapping
     public ResponseEntity<List<Client>> getAllClients(){
         try {
+
             List<Client> clients = clientService.getAllClients();
+
             return ResponseEntity.ok(clients);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -60,6 +64,7 @@ public class ClientController {
         try {
 
             Client createdClient = clientService.saveClient(client);
+
             return ResponseEntity.ok(createdClient);
             
         } catch (Exception e) {
@@ -74,6 +79,7 @@ public class ClientController {
         try {
 
             Client updateClient = clientService.updateClient(id, clientDetails);
+
             return ResponseEntity.ok(updateClient);
             
         } catch (IllegalArgumentException e) {
@@ -90,6 +96,7 @@ public class ClientController {
         try {
 
             clientService.deleteClient(id);
+
             return ResponseEntity.noContent().build();
             
         } catch (IllegalArgumentException e) {
@@ -98,8 +105,5 @@ public class ClientController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
-
-
 
 }

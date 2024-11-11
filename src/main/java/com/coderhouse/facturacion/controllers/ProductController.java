@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.coderhouse.facturacion.models.Client;
+
 import com.coderhouse.facturacion.models.Product;
 import com.coderhouse.facturacion.services.ProductService;
 
@@ -31,8 +31,11 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<Product>> getAllProduct(){
         try {
+
             List<Product> products = productService.getAllProducts();
+
             return ResponseEntity.ok(products);
+
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
@@ -64,6 +67,7 @@ public class ProductController {
         try {
 
             Product createdProduct = productService.saveProduct(product);
+
             return ResponseEntity.ok(createdProduct);
             
         } catch (Exception e) {
@@ -78,7 +82,8 @@ public class ProductController {
     public ResponseEntity<Product> updateClient(@PathVariable Long id, @RequestBody Product productDetails){
         try {
 
-            Product updateProduct = productService.updateClient(id, productDetails);
+            Product updateProduct = productService.updateProduct(id, productDetails);
+
             return ResponseEntity.ok(updateProduct);
             
         } catch (IllegalArgumentException e) {
@@ -96,6 +101,7 @@ public class ProductController {
         try {
 
             productService.deleteProduct(id);
+            
             return ResponseEntity.noContent().build();
             
         } catch (IllegalArgumentException e) {
